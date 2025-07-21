@@ -10,13 +10,22 @@ public class KafkaProducer {
     private final String topic;
     private final KafkaTemplate<String, Transaction> kafkaTemplate;
 
-    public KafkaProducer(@Value("${general.kafka-topic}") String topic, KafkaTemplate<String, Transaction> kafkaTemplate) {
+    // Use the properly configured KafkaTemplate
+    public KafkaProducer(@Value("${general.kafka-topic}") String topic,
+            KafkaTemplate<String, Transaction> kafkaTemplate) {
         this.topic = topic;
         this.kafkaTemplate = kafkaTemplate;
     }
 
     public void send(String transactionLine) {
-        String[] transactionData = transactionLine.split(", ");
-        kafkaTemplate.send(topic, new Transaction(Long.parseLong(transactionData[0]), Long.parseLong(transactionData[1]), Float.parseFloat(transactionData[2])));
+        String cleanedLine = transactionLine.replaceAll("\\s", "");
+        String[] parts = cleanedLine.split(",");
+
+        long senderId = Long.parseLong(parts[0]);
+        long receiverId = Long.parseLong(parts[1]);
+        float amount = Float.parseFloat(parts[2]);
+
+        Transaction transaction = new Transaction(senderId, receiverId, amount);
+        kafkaTemplate.send(topic, transaction);
     }
 }
