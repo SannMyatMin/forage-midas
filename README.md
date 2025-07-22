@@ -1,7 +1,7 @@
 ## Midas
 Project repo for the JPMC Advanced Software Engineering Forage program
 
-### Intro
+## Intro
 This project serves as the "Midas" repository, developed as part of the JPMC Advanced Software Engineering Forage program. The aim of this project is to explore and implement modern software engineering practices and adhere to the standards set by JPMC.
 
 ### Features
