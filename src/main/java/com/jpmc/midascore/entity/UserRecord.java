@@ -1,7 +1,5 @@
 package com.jpmc.midascore.entity;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.*;
 
 @Entity

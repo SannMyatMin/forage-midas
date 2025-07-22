@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Balance {
-    private float amount;
+    private double amount;
 
     public Balance() {
     }
@@ -13,7 +13,11 @@ public class Balance {
         this.amount = amount;
     }
 
-    public float getAmount() {
+    public Balance(double amount) {
+        this.amount = amount;
+    }
+
+    public double getAmount() {
         return amount;
     }
 
@@ -21,8 +25,9 @@ public class Balance {
         this.amount = amount;
     }
 
+
     @Override
     public String toString() {
-        return "Balance {amount=" + amount + "}";
+        return "Balance{amount=" + amount + "}";
     }
 }
