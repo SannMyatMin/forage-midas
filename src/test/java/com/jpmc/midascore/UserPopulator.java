@@ -15,10 +15,15 @@ public class UserPopulator {
 
     public void populate() {
         String[] userLines = fileLoader.loadStrings("/test_data/lkjhgfdsa.hjkl");
-        for (String userLine : userLines) {
-            String[] userData = userLine.split(", ");
-            UserRecord user = new UserRecord(userData[0], Float.parseFloat(userData[1]));
+
+        for (int i = 0; i < userLines.length - 1; i += 2) {
+            String username = userLines[i].trim();
+            String balanceStr = userLines[i + 1].trim();
+            float balance = Float.parseFloat(balanceStr);
+
+            UserRecord user = new UserRecord(username, balance);
             databaseConduit.save(user);
         }
     }
+
 }

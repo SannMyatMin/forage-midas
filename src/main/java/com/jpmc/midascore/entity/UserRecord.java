@@ -13,7 +13,7 @@ public class UserRecord {
     private String name;
 
     @Column(nullable = false)
-    private float balance;
+    private double balance;
 
     protected UserRecord() {
     }
@@ -36,11 +36,11 @@ public class UserRecord {
         return name;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }
