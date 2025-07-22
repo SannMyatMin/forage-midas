@@ -1,5 +1,7 @@
 package com.jpmc.midascore.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,7 +20,7 @@ public class UserRecord {
     protected UserRecord() {
     }
 
-    public UserRecord(String name, float balance) {
+    public UserRecord(String name, double balance) {
         this.name = name;
         this.balance = balance;
     }

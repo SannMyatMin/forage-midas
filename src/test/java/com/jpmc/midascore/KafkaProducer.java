@@ -1,6 +1,10 @@
 package com.jpmc.midascore;
 
+import com.jpmc.midascore.entity.TransactionRecord;
 import com.jpmc.midascore.foundation.Transaction;
+
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -25,7 +29,11 @@ public class KafkaProducer {
         long receiverId = Long.parseLong(parts[1]);
         float amount = Float.parseFloat(parts[2]);
 
-        Transaction transaction = new Transaction(senderId, receiverId, amount);
+        Transaction transaction = new Transaction();
+        transaction.setSenderId(senderId);
+        transaction.setRecipientId(receiverId);
+        transaction.setAmount(BigDecimal.valueOf(amount));
+
         kafkaTemplate.send(topic, transaction);
     }
 }

@@ -1,17 +1,19 @@
 package com.jpmc.midascore.foundation;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction {
     private long senderId;
     private long recipientId;
-    private float amount;
+    private BigDecimal amount;
 
     public Transaction() {
     }
 
-    public Transaction(long senderId, long recipientId, float amount) {
+    public Transaction(long senderId, long recipientId, BigDecimal amount) {
         this.senderId = senderId;
         this.recipientId = recipientId;
         this.amount = amount;
@@ -33,11 +35,11 @@ public class Transaction {
         this.recipientId = recipientId;
     }
 
-    public float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

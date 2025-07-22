@@ -1,5 +1,6 @@
 package com.jpmc.midascore.entity;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 import jakarta.persistence.Entity;
@@ -18,7 +19,7 @@ public class TransactionRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double amount;
+    private BigDecimal amount;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
@@ -27,6 +28,8 @@ public class TransactionRecord {
     @ManyToOne
     @JoinColumn(name = "recipient_id")
     private UserRecord recipient;
+
+    private double incentive;
 
     private Instant timestamp = Instant.now();
 
